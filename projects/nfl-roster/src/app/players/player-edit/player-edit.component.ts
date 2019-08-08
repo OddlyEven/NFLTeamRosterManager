@@ -12,6 +12,7 @@ import { PlayerService } from '../../services/player.service';
 })
 export class PlayerEditComponent implements OnInit {
   player: PlayerViewModel;
+  // player: Observable<PlayerViewModel>;
   teamId: string;
   playerName: string;
   positions = Positions;

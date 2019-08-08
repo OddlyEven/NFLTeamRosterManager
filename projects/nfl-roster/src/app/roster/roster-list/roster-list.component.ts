@@ -19,7 +19,7 @@ export class RosterListComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.teamId = params.get('teamId');
 
-      this.rosterService.getAllPlayers(this.teamId)
+      this.rosterService.getRosterData(this.teamId)
           .subscribe(data => this.rosterViewModel = data);
     });
   }

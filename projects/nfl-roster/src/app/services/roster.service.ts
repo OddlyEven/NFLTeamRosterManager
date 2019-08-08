@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { PlayerViewModel } from '../models/player-view.model';
 import { RosterListViewModel } from '../models/roster-list-view.model';
 import { HttpService } from './http.service';
@@ -11,30 +12,43 @@ export class RosterService extends HttpService {
   private fetchedData: RosterListViewModel;
   private teamId: string;
 
-  getAllPlayers(teamId: string): Observable<RosterListViewModel> {
-    if (this.teamId !== teamId || !this.fetchedData || this.rawData.isDirty) {
-      const team = this.rawData.teams.find((t) => t.id === teamId);
+  getRosterData(teamId: string): Observable<RosterListViewModel> {
+    return this
+      .rawData
+      .pipe(
+        map(rawData => {
+          if (this.teamId !== teamId || !this.fetchedData || rawData.isDirty) {
+            const team = rawData.teams.find((t) => t.id === teamId);
 
-      this.teamId = teamId;
-      this.rawData.isDirty = false;
+            this.teamId = teamId;
+            rawData.isDirty = false;
+            this.rawData = rawData;
 
-      if (team) {
-        const players: PlayerViewModel[] =
-          team.roster
-              .sort((a, b) => a.position.localeCompare(b.position) || a.depthOrder - b.depthOrder)
-              .map((data) => {
-                return {
-                  displayName: data.person.displayName,
-                  unit: data.unit,
-                  position: data.position,
-                  positionAbbr: data.positionAbbr,
-                  depthOrder: data.depthOrder
-                };
-              });
-        this.fetchedData = { items: players };
-      }
-    }
+            if (team) {
+              const players: PlayerViewModel[] =
+                team.roster
+                    .sort((a, b) => a.position.localeCompare(b.position) || a.depthOrder - b.depthOrder)
+                    .map((data) => {
+                      return {
+                        displayName: data.person.displayName,
+                        unit: data.unit,
+                        position: data.position,
+                        positionAbbr: data.positionAbbr,
+                        depthOrder: data.depthOrder
+                      };
+                    });
 
-    return of(this.fetchedData);
+              this.fetchedData = {
+                teamName: team.fullName,
+                items: players
+              };
+            }
+
+            return this.fetchedData;
+          } else {
+            return this.fetchedData;
+          }
+        })
+      );
   }
 }

@@ -1,5 +1,8 @@
-<div class="nfl-roster-list" *ngIf="rosterViewModel">
-  <div *ngFor="let item of rosterViewModel.items">
-    <nfl-roster-detail [item]="item" (rosterDetailClickEvent)="onPlayerClick($event)"></nfl-roster-detail>
+<div *ngIf="rosterViewModel">
+  <h1>{{rosterViewModel.teamName}}</h1>
+  <div class="nfl-roster-list">
+    <div *ngFor="let item of rosterViewModel.items">
+      <nfl-roster-detail [item]="item" (rosterDetailClickEvent)="onPlayerClick($event)"></nfl-roster-detail>
+    </div>
   </div>
 </div>

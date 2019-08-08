@@ -1,4 +1,4 @@
-<div class="nfl-player-edit">
+<div class="nfl-player-edit" *ngIf="player">
   <div>
     <mat-form-field>
       <input matInput placeholder="Display Name" [(ngModel)]="player.displayName">

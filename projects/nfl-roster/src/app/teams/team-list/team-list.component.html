@@ -1,0 +1,6 @@
+<h1>Team List</h1>
+<div *ngIf="teamsViewModel && teamsViewModel.items" class="nfl-team-list">
+  <div *ngFor="let item of teamsViewModel.items">
+    <nfl-team-detail [team]="item" (teamDetailClickEvent)="onTeamClick($event)"></nfl-team-detail>
+  </div>
+</div>

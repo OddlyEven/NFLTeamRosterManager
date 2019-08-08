@@ -1,0 +1,43 @@
+@mixin roster-detail-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .nfl-roster-deail {
+    cursor: pointer;
+    margin: 12px 0;
+    min-width: 300px;
+
+    .mat-card {
+      &:hover {
+        background: mat-color($accent, 50);
+      }
+    }
+
+    .mat-card-content {
+      display: flex;
+      flex-direction: column;
+      padding: 4px 12px;
+
+      .mat-badge-content {
+        display: flex;
+        justify-content: center;
+      }
+
+      .roster-info {
+        display: flex;
+        justify-content: space-between;
+        margin-right: 12px;
+
+        label {
+          color: mat-color($primary, 500);
+          font-weight: bold;
+        }
+
+        span {
+          color: mat-color($accent, 900);
+        }
+      }
+    }
+  }
+}

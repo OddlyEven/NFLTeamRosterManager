@@ -1,0 +1,21 @@
+<div *ngIf="item" class="nfl-roster-deail">
+  <mat-card (click)="onRosterDetailClick(item.displayName)">
+    <mat-card-header>
+      <mat-card-title>{{item.displayName}}</mat-card-title>
+      <mat-card-subtitle>{{item.unit}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="roster-info">
+        <label>Position:</label>
+        <span *ngIf="item.positionAbbr else noPosAbbr" matBadge="{{item.positionAbbr}}" matBadgePosition="above after" matBadgeOverlap="false">{{item.position}}</span>
+        <ng-template #noPosAbbr>
+          <span>{{item.position}}</span>
+        </ng-template>
+      </div>
+      <div class="roster-info">
+        <label>Depth Order:</label>
+        <span>{{item.depthOrder}}</span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

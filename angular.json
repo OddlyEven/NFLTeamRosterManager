@@ -1,0 +1,132 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "nfl-roster": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/nfl-roster",
+      "sourceRoot": "projects/nfl-roster/src",
+      "prefix": "nfl",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/nfl-roster",
+            "index": "projects/nfl-roster/src/index.html",
+            "main": "projects/nfl-roster/src/main.ts",
+            "polyfills": "projects/nfl-roster/src/polyfills.ts",
+            "tsConfig": "projects/nfl-roster/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/nfl-roster/src/favicon.ico",
+              "projects/nfl-roster/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/nfl-roster/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/nfl-roster/src/environments/environment.ts",
+                  "with": "projects/nfl-roster/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "nfl-roster:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "nfl-roster:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "nfl-roster:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/nfl-roster/src/test.ts",
+            "polyfills": "projects/nfl-roster/src/polyfills.ts",
+            "tsConfig": "projects/nfl-roster/tsconfig.spec.json",
+            "karmaConfig": "projects/nfl-roster/karma.conf.js",
+            "assets": [
+              "projects/nfl-roster/src/favicon.ico",
+              "projects/nfl-roster/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/nfl-roster/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/nfl-roster/tsconfig.app.json",
+              "projects/nfl-roster/tsconfig.spec.json",
+              "projects/nfl-roster/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/nfl-roster/e2e/protractor.conf.js",
+            "devServerTarget": "nfl-roster:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "nfl-roster:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "nfl-roster"
+}

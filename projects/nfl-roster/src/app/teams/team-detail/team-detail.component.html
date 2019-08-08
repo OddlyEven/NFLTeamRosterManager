@@ -1,0 +1,16 @@
+<div *ngIf="team" class="nfl-team-deail">
+  <mat-card (click)="onTeamDetailClick(team.id)">
+    <mat-card-header>
+      <div mat-card-avatar *ngIf="team.avatarSrc">
+        <img [src]="team.avatarSrc" alt="logo"/>
+      </div>
+      <mat-card-title>{{team.fullname}}</mat-card-title>
+      <mat-card-subtitle>{{team.nickname}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <span *ngIf="team.nickname else noNickname">The {{team.nickname}} have</span>
+      <ng-template #noNickname>This team has</ng-template>
+      <span>&nbsp;{{team.playerCount}} active player{{team.playerCount !== 1 ? "s" : ""}}.</span>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,16 @@
+@import 'assets/themes/visa-theme.scss';
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.main-content {
+  margin: 20px;
+}
+
+@include angular-material-theme($visa-theme);

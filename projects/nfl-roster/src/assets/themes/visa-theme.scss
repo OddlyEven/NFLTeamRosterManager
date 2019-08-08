@@ -1,0 +1,90 @@
+@import '~@angular/material/theming';
+@import '../../app/app.component';
+@import '../../app/page-not-found/page-not-found.component';
+@import '../../app/teams/team-list/team-list.component';
+@import '../../app/teams/team-detail/team-detail.component';
+@import '../../app/roster/roster-list/roster-list.component';
+@import '../../app/roster/roster-detail/roster-detail.component';
+@import '../../app/players/player-edit/player-edit.component';
+
+@include mat-core();
+
+$mat-visa-primary: (
+  50 : #e4e4ee,
+  100 : #babcd4,
+  200 : #8d8fb8,
+  300 : #5f629c,
+  400 : #3c4186,
+  500 : #1a1f71,
+  600 : #171b69,
+  700 : #13175e,
+  800 : #0f1254,
+  900 : #080a42,
+  A100 : #797cff,
+  A200 : #464aff,
+  A400 : #1318ff,
+  A700 : #0006f8,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+
+$mat-visa-accent: (
+  50 : #fef6e0,
+  100 : #fde9b3,
+  200 : #fbdb80,
+  300 : #f9cc4d,
+  400 : #f8c126,
+  500 : #f7b600,
+  600 : #f6af00,
+  700 : #f5a600,
+  800 : #f39e00,
+  900 : #f18e00,
+  A100 : #ffffff,
+  A200 : #fff3e5,
+  A400 : #ffdbb2,
+  A700 : #ffd098,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+$visa-primary: mat-palette($mat-visa-primary);
+$visa-accent: mat-palette($mat-visa-accent);
+$visa-warn: mat-palette($mat-red);
+
+$visa-theme: mat-light-theme($visa-primary, $visa-accent, $visa-warn);
+
+@include toolbar-theme($visa-theme);
+@include page-not-found-theme($visa-theme);
+@include team-list-theme($visa-theme);
+@include team-detail-theme($visa-theme);
+@include roster-list-theme($visa-theme);
+@include roster-detail-theme($visa-theme);
+@include player-edit-theme($visa-theme);

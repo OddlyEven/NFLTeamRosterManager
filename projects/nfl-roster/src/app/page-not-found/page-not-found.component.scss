@@ -1,0 +1,12 @@
+@mixin page-not-found-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .dead-link {
+    display: flex;
+    justify-content: center;
+  }
+}

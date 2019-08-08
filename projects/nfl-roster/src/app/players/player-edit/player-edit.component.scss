@@ -1,0 +1,19 @@
+@mixin player-edit-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .nfl-player-edit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .button-group {
+      margin-top: 12px;
+
+      .mat-raised-button {
+        margin: 0 24px;
+      }
+    }
+  }
+}

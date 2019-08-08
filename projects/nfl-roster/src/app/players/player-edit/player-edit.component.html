@@ -1,0 +1,38 @@
+<div class="nfl-player-edit">
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Display Name" [(ngModel)]="player.displayName">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-select placeholder="Unit" [(ngModel)]="player.unit">
+        <ng-container *ngFor="let unit of units">
+          <mat-option value="{{unit | uppercase}}">{{unit}}</mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-select placeholder="Position" [(ngModel)]="player.position">
+        <ng-container *ngFor="let position of positions">
+          <mat-option value="{{position}}">{{position}}</mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Depth Order" [(ngModel)]="player.depthOrder">
+    </mat-form-field>
+  </div>
+
+  <div class="button-group">
+    <a mat-raised-button [routerLink]="['/teams', teamId]">Cancel</a>
+    <button mat-raised-button (click)="onSavePlayerChanges()" color="primary">Save</button>
+  </div>
+</div>

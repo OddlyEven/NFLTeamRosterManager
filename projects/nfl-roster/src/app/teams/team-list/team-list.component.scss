@@ -1,0 +1,13 @@
+@mixin team-list-theme($theme) {
+
+  $primary: map-get($theme, primary);
+
+  .nfl-team-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: mat-color($primary, 100);
+    padding: 20px;
+  }
+}

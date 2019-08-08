@@ -1,0 +1,31 @@
+@mixin team-detail-theme($theme) {
+
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  .nfl-team-deail {
+    cursor: pointer;
+    margin: 12px 0;
+
+    .mat-card {
+      &:hover {
+        background: mat-color($accent, 50);
+      }
+    }
+
+    .mat-card-content {
+      display: flex;
+      justify-content: center;
+    }
+
+    .mat-card-avatar {
+      align-self: center;
+      height: auto;
+      width: auto;
+
+      img {
+        max-height: 48px;
+      }
+    }
+  }
+}

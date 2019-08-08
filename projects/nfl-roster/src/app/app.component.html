@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <h1>NFL Team Roster Manager</h1>
+    <div class="toolbar-buttons">
+      <a mat-button [routerLink]="'/teams'"> Home</a>
+      <a mat-button (click)="onReload()"> Reload Data</a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>
